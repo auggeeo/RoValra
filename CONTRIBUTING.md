@@ -32,6 +32,22 @@ Describe the fix in detail. Please include:
 
 PRs without screenshots for new features, or without a proper description for bug fixes, may take longer to review or be closed.
 
+## Eligibility for the Contributor Badge
+Since RoValra is a popular extension, we are adding restrictions of what makes you eligible for the "Contributor" badge. These requirements ensure that high quality PRs are worthy of the badge.
+
+RoValra's maintainers may disallow you being eligible for a "Contributor" badge or any reason. RoValara's maintainers can also make give anyone the "Contributor" badge for any reason.
+
+### What makes you eligible
+- Making a brand new feature that was not in RoValra previously in any way, shape or form.
+- Editing an already existing feature to improve its functionality beyond its previous behavaiour.
+
+### What does not make you eligible
+- Suggesting a feature that was later added into RoValra.
+- Translating RoValra into another language (there's a separate badge for this).
+- Fixing a simple bug, like an invalid import, visual bug, or a misspelling of a word.
+
+Even if your PR isn't eligible for a badge, we still appreciate your support to improving RoValra and making it a better extension!
+
 ## Adding Translations
 
 RoValra uses [i18next](https://www.i18next.com/) for translations. All translations are community made.
