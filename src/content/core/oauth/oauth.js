@@ -52,6 +52,21 @@ async function getOAuthProgress() {
     return storage[OAUTH_PROGRESS_KEY] || null;
 }
 
+async function getOAuthClientID() {
+    const res = await callRobloxApi({
+        endpoint: '/v1/auth/client_id',
+        subdomain: 'apis',
+        isRovalraApi: true,
+        method: 'GET'
+    });
+
+    const oauthID = await res.text()
+
+    console.log(`[RoValra Roblox OAuth Verification] got ${oauthID}, is okay ${res.ok}, code ${res.status}`);
+
+    return (res.ok && res.status == 200 && oauthID) || '5835339573709822795';
+}
+
 export async function getValidAccessToken(
     forceRefresh = false,
     lazyForNonDonators = true,
@@ -279,7 +294,7 @@ async function startOAuthFlow(silent = false) {
                     endpoint: '/oauth/v1/authorizations',
                     method: 'POST',
                     body: {
-                        clientId: '5835339573709822795',
+                        clientId: await getOAuthClientID(),
                         responseTypes: ['Code'],
                         redirectUri:
                             'https://apis.rovalra.com/v1/auth/callback',
@@ -398,7 +413,7 @@ async function resumeOAuthFlow(userId, progress) {
                 endpoint: '/oauth/v1/authorizations',
                 method: 'POST',
                 body: {
-                    clientId: '5835339573709822795',
+                    clientId: await getOAuthClientID(),
                     responseTypes: ['Code'],
                     redirectUri: 'https://apis.rovalra.com/v1/auth/callback',
                     scopes: [
